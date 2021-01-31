@@ -1,5 +1,7 @@
 <template>
-  <div class="posts"></div>
+  <div class="posts">
+    <post-list />
+  </div>
 </template>
 
 <style scoped>
