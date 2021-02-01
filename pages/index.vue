@@ -3,9 +3,34 @@
     <section class="intro">
       <h1>Wellcome to your dashboard</h1>
     </section>
-    <post-list />
+    <post-list :posts="loadedPosts" />
   </div>
 </template>
+
+<script>
+export default {
+  asyncData() {
+    return {
+      loadedPosts: [
+        {
+          id: "1",
+          title: "title one",
+          previewText: "this is a normal text",
+          thumbnail:
+            "https://www.gettingsmart.com/wp-content/uploads/2016/08/Future-Technology-Feature-Image.jpg"
+        },
+        {
+          id: "2",
+          title: "title two",
+          previewText: "this is a normal text",
+          thumbnail:
+            "https://www.gettingsmart.com/wp-content/uploads/2016/08/Future-Technology-Feature-Image.jpg"
+        }
+      ]
+    };
+  }
+};
+</script>
 
 <style>
 .intro {

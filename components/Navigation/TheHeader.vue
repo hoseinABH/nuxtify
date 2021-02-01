@@ -77,7 +77,7 @@
 
 .nav-item a:hover,
 .nav-item a:active,
-.nav-item a.nuxt-link-active {
+.nav-item a.nuxt-link-exact-active {
   color: red;
 }
 </style>

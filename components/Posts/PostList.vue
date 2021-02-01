@@ -1,25 +1,13 @@
 <template>
   <section class="posts-list">
     <post-card
-      id="1"
+      v-for="post in posts"
+      :key="post.id"
+      :id="post.id"
       :isAdmin="isAdmin"
-      title="title 1"
-      previewText="this is some preview text"
-      thumbnail="https://www.gettingsmart.com/wp-content/uploads/2016/08/Future-Technology-Feature-Image.jpg"
-    />
-    <post-card
-      id="2"
-      :isAdmin="isAdmin"
-      title="title 2"
-      previewText="this is some preview text"
-      thumbnail="https://www.gettingsmart.com/wp-content/uploads/2016/08/Future-Technology-Feature-Image.jpg"
-    />
-    <post-card
-      id="3"
-      :isAdmin="isAdmin"
-      title="title 3"
-      previewText="this is some preview text"
-      thumbnail="https://www.gettingsmart.com/wp-content/uploads/2016/08/Future-Technology-Feature-Image.jpg"
+      :title="post.title"
+      :previewText="post.previewText"
+      :thumbnail="post.thumbnail"
     />
   </section>
 </template>
@@ -29,6 +17,10 @@ export default {
     isAdmin: {
       type: Boolean,
       default: false
+    },
+    posts: {
+      type: Array,
+      required: true
     }
   }
 };
