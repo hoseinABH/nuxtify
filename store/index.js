@@ -1,4 +1,5 @@
 import Vuex from "vuex";
+import axios from "axios";
 
 function createStore() {
   return new Vuex.Store({
@@ -12,27 +13,16 @@ function createStore() {
     },
     actions: {
       nuxtServerInit(vuexContext, context) {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            vuexContext.commit("setPosts", [
-              {
-                id: "1",
-                title: "title one",
-                previewText: "this is a normal text",
-                thumbnail:
-                  "https://www.gettingsmart.com/wp-content/uploads/2016/08/Future-Technology-Feature-Image.jpg"
-              },
-              {
-                id: "2",
-                title: "title two",
-                previewText: "this is a normal text",
-                thumbnail:
-                  "https://www.gettingsmart.com/wp-content/uploads/2016/08/Future-Technology-Feature-Image.jpg"
-              }
-            ]);
-            resolve();
-          }, 1000);
-        });
+        return axios
+          .get("https://nuxtify-8-default-rtdb.firebaseio.com/posts.json")
+          .then(res => {
+            const postArray = [];
+            for (const key in res.data) {
+              postArray.push({ ...res.data[key] });
+            }
+            vuexContext.commit("setPosts", postArray);
+          })
+          .catch(e => context.eror(e));
       },
       setPosts(vuexContext, posts) {
         vuexContext.commit("setPosts", posts);
