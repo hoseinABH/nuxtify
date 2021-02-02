@@ -31,6 +31,9 @@ export default {
         };
       })
       .catch(e => error(e));
+  },
+  head: {
+    title: "blog post"
   }
 };
 </script>

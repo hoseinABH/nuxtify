@@ -9,6 +9,9 @@ export default {
     loadedPosts() {
       return this.$store.getters.loadedPosts;
     }
+  },
+  head: {
+    title: "all posts"
   }
 };
 </script>

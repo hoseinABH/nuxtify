@@ -22,6 +22,9 @@
 <script>
 export default {
   layout: "admin",
+  head: {
+    title: "authentication"
+  },
   data() {
     return {
       isLogin: true

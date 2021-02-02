@@ -15,6 +15,9 @@ export default {
         .dispatch("addPost", formData)
         .then(() => this.$router.push("/admin"));
     }
+  },
+  head: {
+    title: "create post"
   }
 };
 </script>

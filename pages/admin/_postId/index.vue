@@ -29,6 +29,9 @@ export default {
         .dispatch("editPost", editedPost)
         .then(() => this.$router.push("/admin"));
     }
+  },
+  head: {
+    title: "blog post"
   }
 };
 </script>

@@ -11,6 +11,13 @@
     </p>
   </div>
 </template>
+<script>
+export default {
+  head: {
+    title: "about"
+  }
+};
+</script>
 
 <style scoped>
 .about-page {

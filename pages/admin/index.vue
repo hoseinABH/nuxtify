@@ -12,6 +12,13 @@
   </div>
 </template>
 
+<script>
+export default {
+  head: {
+    title: "admin"
+  }
+};
+</script>
 <style scoped>
 .admin-page {
   padding: 20px;
