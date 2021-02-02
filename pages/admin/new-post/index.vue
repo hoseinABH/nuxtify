@@ -7,18 +7,13 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   layout: "admin",
   methods: {
     onSubmitted(formData) {
-      axios
-        .post(
-          "https://nuxtify-8-default-rtdb.firebaseio.com/posts.json",
-          formData
-        )
-        .then(res => console.log(res))
-        .catch(error => console.log(error));
+      this.$store
+        .dispatch("addPost", formData)
+        .then(() => this.$router.push("/admin"));
     }
   }
 };

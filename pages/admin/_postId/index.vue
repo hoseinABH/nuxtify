@@ -1,23 +1,34 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <admin-post-form :post="loadedPost" />
+      <admin-post-form :post="loadedPost" @submit="onSubmitted" />
     </section>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  data() {
-    return {
-      loadedPost: {
-        author: "hosein",
-        title: "how to become a monster",
-        thumbnailLink:
-          "https://www.gettingsmart.com/wp-content/uploads/2016/08/Future-Technology-Feature-Image.jpg",
-        content: "this is the test content"
-      }
-    };
+  asyncData(context) {
+    return axios
+      .get(
+        "https://nuxtify-8-default-rtdb.firebaseio.com/posts/" +
+          context.params.postId +
+          ".json"
+      )
+      .then(res => {
+        return {
+          loadedPost: { ...res.data, id: context.params.postId }
+        };
+      })
+      .catch(e => context.error(e));
+  },
+  methods: {
+    onSubmitted(editedPost) {
+      this.$store
+        .dispatch("editPost", editedPost)
+        .then(() => this.$router.push("/admin"));
+    }
   }
 };
 </script>

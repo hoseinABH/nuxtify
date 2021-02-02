@@ -38,7 +38,7 @@ export default {
   build: {},
   loading: {
     color: "DodgerBlue",
-    height: "10px",
+    height: "5px",
     continuous: true,
     duration: 3000
   }

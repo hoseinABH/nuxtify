@@ -18,20 +18,19 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
-  asyncData({ params }) {
-    return {
-      loadedPost: {
-        id: params.id,
-        title: `title ${params.id}`,
-        previewText: "this is a normal text",
-        author: "hosein ABH",
-        updatedDate: new Date(),
-        content: "",
-        thumbnail:
-          "https://www.gettingsmart.com/wp-content/uploads/2016/08/Future-Technology-Feature-Image.jpg"
-      }
-    };
+  asyncData({ error, params }) {
+    return axios
+      .get(
+        `https://nuxtify-8-default-rtdb.firebaseio.com/posts/${params.id}.json`
+      )
+      .then(res => {
+        return {
+          loadedPost: res.data
+        };
+      })
+      .catch(e => error(e));
   }
 };
 </script>
